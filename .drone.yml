@@ -5,7 +5,7 @@ pipeline:
       - APP_NAME=sun-forever-tw_pv_monitoring_system_web_app
       - DOCKER_USERNAME=sunforevertw
     commands:
-      - echo $DRONE_BRANCH
+      - echo ${DRONE_DIR}
       # - export APP_SOURCE_DIR="$${DRONE_DIR}"/app
       # - echo $${APP_SOURCE_DIR}
       # - ls
