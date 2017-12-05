@@ -5,11 +5,8 @@ pipeline:
       - APP_NAME=sun-forever-tw_pv_monitoring_system_web_app
       - DOCKER_USERNAME=sunforevertw
     commands:
-      - echo $DRONE_DIR
-      - export APP_SOURCE_DIR="$DRONE_DIR"/app
-      - echo $APP_SOURCE_DIR
-      # - ls
-      # - chmod +x .scripts/install-meteor.sh && .scripts/install-meteor.sh
-      # - cd ${APP_SOURCE_DIR} && meteor build ../build --architecture os.linux.x86_64
-      # - cd ../build && tar -zxvf app.tar.gz
+      - chmod +x .scripts/install-meteor.sh && .scripts/install-meteor.sh
+      - cd ./app && meteor build ../build --architecture os.linux.x86_64
+      - cd ../build && tar -zxvf app.tar.gz
+      - ls
       # - cd ../ && docker build -t $${DOCKER_USERNAME}/$${APP_NAME}:${DRONE_TAG} .
