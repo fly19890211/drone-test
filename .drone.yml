@@ -3,9 +3,11 @@ pipeline:
     image: node:latest
     environment:
       - APP_NAME=sun-forever-tw_pv_monitoring_system_web_app
+      - APP_SOURCE_DIR=$CI_WORKSPACE/app
       - DOCKER_USERNAME=sunforevertw
     commands:
       - printenv
+      - set -e
       - chmod +x .scripts/install-meteor.sh && .scripts/install-meteor.sh
       - cd ./app && meteor build ../build --architecture os.linux.x86_64
       - cd ../build && tar -zxvf app.tar.gz
