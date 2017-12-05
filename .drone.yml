@@ -3,7 +3,7 @@ pipeline:
     image: node:latest
     environment:
       - APP_NAME=sun-forever-tw_pv_monitoring_system_web_app
-      - APP_SOURCE_DIR="${CI_WORKSPACE}/app"
+      - APP_SOURCE_DIR="$(CI_WORKSPACE)/app"
       - DOCKER_USERNAME=sunforevertw
     commands:
       - printenv
