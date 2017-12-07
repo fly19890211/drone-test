@@ -1,15 +1,24 @@
 pipeline:
+  restore-cache:
+    image: drillster/drone-volume-cache
+    restore: true
+    mount:
+      - ~/.meteor
+    volumes:
+      - /tmp/cache:/cache
   build-app:
     image: node:latest
     environment:
       - APP_NAME=sun-forever-tw_pv_monitoring_system_web_app
       - DOCKER_USERNAME=sunforevertw
     commands:
-      - export APP_SOURCE_DIR="${CI_WORKSPACE}/app"
+      - export APP_SOURCE_DIR="$${CI_WORKSPACE}"/app
+      - echo $APP_SOURCE_DIR
       - printenv
       - chmod +x .scripts/install-meteor.sh && .scripts/install-meteor.sh
-      - cd $APP_SOURCE_DIR
-      - meteor build ../build --architecture os.linux.x86_64
-      - cd ../build && tar -zxvf app.tar.gz
-      - ls
+      # - cd $APP_SOURCE_DIR
+      # - ls
+      # - meteor build ../build --architecture os.linux.x86_64
+      # - cd ../build && tar -zxvf app.tar.gz
+      # - ls
       # - cd ../ && docker build -t $${DOCKER_USERNAME}/$${APP_NAME}:${DRONE_TAG} .
