@@ -6,7 +6,7 @@ pipeline:
   #     - ~/.meteor
   #   volumes:
   #     - /volume1/docker/drone/var/lib/drone/cache:/var/lib/drone/cache
-  #     
+  #
 
   build-app:
     image: node:latest
@@ -21,7 +21,7 @@ pipeline:
       - chmod +x .scripts/install-meteor.sh && .scripts/install-meteor.sh
       - cd $APP_SOURCE_DIR
       - ls
-      - meteor build ../build --architecture os.linux.x86_64
+      - meteor build ../build --architecture os.linux.x86_64 --allow-superuser
       - cd ../build && tar -zxvf app.tar.gz
       - ls
       # - cd ../ && docker build -t $${DOCKER_USERNAME}/$${APP_NAME}:${DRONE_TAG} .
