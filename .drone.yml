@@ -15,8 +15,12 @@ pipeline:
       - meteor build ../build --architecture os.linux.x86_64 --allow-superuser
       - cd ../build && tar -zxvf app.tar.gz
       - echo $${DOCKER_USERNAME}/$${APP_NAME}:$${DRONE_TAG}
-      - cd ../ && docker build -t $${DOCKER_USERNAME}/$${APP_NAME}:$${DRONE_TAG} .
+      # - cd ../ && docker build -t $${DOCKER_USERNAME}/$${APP_NAME}:$${DRONE_TAG} .
 
+  docker:
+    image: plugins/docker
+    repo: foo/bar
+    dockerfile: Dockerfile
     # rebuild-cache:
     #   image: drillster/drone-volume-cache
     #   rebuild: false
