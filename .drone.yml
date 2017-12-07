@@ -1,17 +1,8 @@
 pipeline:
-  # rebuild-cache:
-  #   image: drillster/drone-volume-cache
-  #   rebuild: false
-  #   mount:
-  #     - ~/.meteor
-  #   volumes:
-  #     - /volume1/docker/drone/var/lib/drone/cache:/var/lib/drone/cache
-  #
-
   build-app:
     image: node:latest
     environment:
-      - APP_NAME=sun-forever-tw_pv_monitoring_system_web_app
+      - APP_NAME=drone_test_meteor
       - DOCKER_USERNAME=sunforevertw
     commands:
       - ls
@@ -24,4 +15,12 @@ pipeline:
       - ls
       - meteor build ../build --architecture os.linux.x86_64 --allow-superuser
       - cd ../build && tar -zxvf app.tar.gz
-      - cd ../ && docker build -t $${DOCKER_USERNAME}/$${APP_NAME}:${DRONE_TAG} .
+      - cd ../ && docker build -t ${DOCKER_USERNAME}/${APP_NAME}:${DRONE_TAG} .
+
+    # rebuild-cache:
+    #   image: drillster/drone-volume-cache
+    #   rebuild: false
+    #   mount:
+    #     - ~/.meteor
+    #   volumes:
+    #     - /volume1/docker/drone/var/lib/drone/cache:/var/lib/drone/cache
