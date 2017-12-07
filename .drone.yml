@@ -5,7 +5,7 @@ pipeline:
       - APP_NAME=drone_test_meteor
       - DOCKER_USERNAME=sunforevertw
     commands:
-      - ls
+      - echo "$${DOCKER_USERNAME}/$${APP_NAME}":${DRONE_TAG}
       - export APP_SOURCE_DIR="$${CI_WORKSPACE}"/app
       - echo $APP_SOURCE_DIR
       # - printenv
@@ -15,7 +15,6 @@ pipeline:
       - ls
       - meteor build ../build --architecture os.linux.x86_64 --allow-superuser
       - cd ../build && tar -zxvf app.tar.gz
-      - echo "${DOCKER_USERNAME}/${APP_NAME}":${DRONE_TAG}
       # - cd ../ && docker build -t "${DOCKER_USERNAME}"/"${APP_NAME}":${DRONE_TAG} .
 
     # rebuild-cache:
