@@ -6,7 +6,7 @@ pipeline:
       - ~/.meteor
     volumes:
       # - /volume1/docker/drone/var/lib/drone/cache:/var/lib/drone/cache
-      - - /tmp/cache:/cache
+      - /tmp/cache:/cache
 
   build-app:
     image: node:latest
