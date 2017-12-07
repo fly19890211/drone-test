@@ -6,6 +6,8 @@ pipeline:
       - ~/.meteor
     volumes:
       - /tmp/cache:/cache
+    commands:
+      - ls /cache
   build-app:
     image: node:latest
     environment:
