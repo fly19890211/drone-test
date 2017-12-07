@@ -5,15 +5,14 @@ pipeline:
     mount:
       - ~/.meteor
     volumes:
-      - /tmp/cache:/cache
-    commands:
-      - ls /cache
+      - /:/cache
   build-app:
     image: node:latest
     environment:
       - APP_NAME=sun-forever-tw_pv_monitoring_system_web_app
       - DOCKER_USERNAME=sunforevertw
     commands:
+      - ls
       - export APP_SOURCE_DIR="$${CI_WORKSPACE}"/app
       - echo $APP_SOURCE_DIR
       - printenv
