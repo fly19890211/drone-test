@@ -1,11 +1,12 @@
 pipeline:
-  restore-cache:
+  rebuild-cache:
     image: drillster/drone-volume-cache
-    restore: true
+    rebuild: false
     mount:
       - ~/.meteor
     volumes:
-      - /:/cache
+      - /volume1/docker/drone/var/lib/drone/cache:/var/lib/drone/cache
+
   build-app:
     image: node:latest
     environment:
@@ -15,11 +16,11 @@ pipeline:
       - ls
       - export APP_SOURCE_DIR="$${CI_WORKSPACE}"/app
       - echo $APP_SOURCE_DIR
-      - printenv
+      # - printenv
       - chmod +x .scripts/install-meteor.sh && .scripts/install-meteor.sh
-      # - cd $APP_SOURCE_DIR
-      # - ls
-      # - meteor build ../build --architecture os.linux.x86_64
-      # - cd ../build && tar -zxvf app.tar.gz
-      # - ls
+      - cd $APP_SOURCE_DIR
+      - ls
+      - meteor build ../build --architecture os.linux.x86_64
+      - cd ../build && tar -zxvf app.tar.gz
+      - ls
       # - cd ../ && docker build -t $${DOCKER_USERNAME}/$${APP_NAME}:${DRONE_TAG} .
