@@ -22,6 +22,8 @@ else
   # https://github.com/jshimko/meteor-launchpad/issues/39
   sed -i.bak "s/tar -xzf.*/bsdtar -xf \"\$TARBALL_FILE\" -C \"\$INSTALL_TMPDIR\"/g" /tmp/install_meteor.sh
 
+  ls /tmp
+
   # install
   printf "\n[-] Installing Meteor $METEOR_VERSION...\n\n"
   sh /tmp/install_meteor.sh
