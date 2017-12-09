@@ -21,6 +21,7 @@ pipeline:
     image: plugins/docker
     repo: foo/bar
     dockerfile: Dockerfile
+    storage_driver: vfs     # issue known from: http://www.jianshu.com/p/8198bbf581f6
     # rebuild-cache:
     #   image: drillster/drone-volume-cache
     #   rebuild: false
