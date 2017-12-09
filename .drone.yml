@@ -15,6 +15,7 @@ pipeline:
       - meteor build ../build --architecture os.linux.x86_64 --allow-superuser
       - cd ../build && tar -zxvf app.tar.gz
       - echo $${DOCKER_USERNAME}/$${APP_NAME}:$${DRONE_TAG}
+      - apt-get update && apt-get install -y tree
       - tree -d ./bundle
       # - cd ../ && docker build -t $${DOCKER_USERNAME}/$${APP_NAME}:$${DRONE_TAG} .
 
