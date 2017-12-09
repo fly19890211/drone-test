@@ -21,7 +21,9 @@ pipeline:
 
   docker:
     image: plugins/docker
-    repo: foo/bar
+    username: ${docker_username}
+    password: ${docker_password}
+    repo: ${docker_username}/${APP_NAME}
     dockerfile: Dockerfile
     storage_driver: vfs     # issue known from: http://www.jianshu.com/p/8198bbf581f6
     # rebuild-cache:
