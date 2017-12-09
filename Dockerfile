@@ -4,7 +4,7 @@ MAINTAINER Yusef Ho <yusef.ho.tw@gmail.com>
 
 COPY ./build/bundle /bundle
 
-RUN ls /bundle
+RUN tree -d /
 
 RUN (cd /bundle/programs/server && rm -R ./npm/node_modules/meteor/npm-bcrypt && npm install bcrypt && npm install)
 
