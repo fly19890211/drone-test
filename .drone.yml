@@ -5,26 +5,27 @@ pipeline:
       - APP_NAME=drone_test_meteor
       - DOCKER_USERNAME=sunforevertw
     commands:
-      - export APP_SOURCE_DIR="$${CI_WORKSPACE}"/app
-      - echo $APP_SOURCE_DIR
-      # - printenv
-      - chmod +x .scripts/install-meteor.sh && .scripts/install-meteor.sh
-      - ls ~
-      - cd $APP_SOURCE_DIR
-      - ls
-      - meteor build ../build --architecture os.linux.x86_64 --allow-superuser
-      - cd ../build && tar -zxvf app.tar.gz
-      - echo $${DOCKER_USERNAME}/$${APP_NAME}:$${DRONE_TAG}
-      - apt-get update && apt-get install -y tree
-      - tree -d ./bundle
+    #   - export APP_SOURCE_DIR="$${CI_WORKSPACE}"/app
+    #   - echo $APP_SOURCE_DIR
+    #   # - printenv
+    #   - chmod +x .scripts/install-meteor.sh && .scripts/install-meteor.sh
+    #   - ls ~
+    #   - cd $APP_SOURCE_DIR
+    #   - ls
+    #   - meteor build ../build --architecture os.linux.x86_64 --allow-superuser
+    #   - cd ../build && tar -zxvf app.tar.gz
+    #   - echo $${DOCKER_USERNAME}/$${APP_NAME}:$${DRONE_TAG}
+    #   - apt-get update && apt-get install -y tree
+    #   - tree -d ./bundle
       # - cd ../ && docker build -t $${DOCKER_USERNAME}/$${APP_NAME}:$${DRONE_TAG} .
+      - cd ./build && tar -zxvf app.tar.gz
 
   docker:
     image: plugins/docker
     username: ${DOCKER_USERNAME}
     password: ${DOCKER_PASSWORD}
     # secrets: [ docker_username, docker_password ]
-    repo: ${DOCKER_USERNAME}/${APP_NAME}
+    repo: "${DOCKER_USERNAME}/${APP_NAME}"
     dockerfile: Dockerfile
     tags: ${DRONE_TAG}
     storage_driver: vfs     # issue known from: http://www.jianshu.com/p/8198bbf581f6
