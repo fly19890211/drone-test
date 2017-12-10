@@ -23,9 +23,9 @@ pipeline:
     image: plugins/docker
     username: ${docker_username}
     password: ${docker_password}
-    repo: ${docker_username}/${APP_NAME}
+    repo: $${docker_username}/$${APP_NAME}
     dockerfile: Dockerfile
-    tags: [$${DRONE_TAG}]
+    tags: $${DRONE_TAG}
     storage_driver: vfs     # issue known from: http://www.jianshu.com/p/8198bbf581f6
     # rebuild-cache:
     #   image: drillster/drone-volume-cache
