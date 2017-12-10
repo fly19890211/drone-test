@@ -21,12 +21,12 @@ pipeline:
 
   docker:
     image: plugins/docker
-    # username: "$${docker_username}"
-    # password: "$${docker_password}"
-    secrets: [ docker_username, docker_password ]
+    username: ${DOCKER_USERNAME}
+    password: ${DOCKER_PASSWORD}
+    # secrets: [ docker_username, docker_password ]
     repo: "$${docker_username}"/"$${APP_NAME}"
     dockerfile: Dockerfile
-    tags: "$${DRONE_TAG}"
+    tags: ${DRONE_TAG}
     storage_driver: vfs     # issue known from: http://www.jianshu.com/p/8198bbf581f6
     when:
       branch: master
