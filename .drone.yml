@@ -24,7 +24,7 @@ pipeline:
     username: ${DOCKER_USERNAME}
     password: ${DOCKER_PASSWORD}
     # secrets: [ docker_username, docker_password ]
-    repo: "$${docker_username}"/"$${APP_NAME}"
+    repo: ${DOCKER_USERNAME}/${APP_NAME}
     dockerfile: Dockerfile
     tags: ${DRONE_TAG}
     storage_driver: vfs     # issue known from: http://www.jianshu.com/p/8198bbf581f6
