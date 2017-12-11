@@ -18,4 +18,5 @@ ENV HTTP_FORWARDED_COUNT=1 \
 
 EXPOSE 80
 
-CMD METEOR_SETTINGS=$(cat /bundle/settings.json) && node /bundle/main.js
+# CMD METEOR_SETTINGS=$(cat /bundle/settings.json) && node /bundle/main.js
+CMD node /bundle/main.js
