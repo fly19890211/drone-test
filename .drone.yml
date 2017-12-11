@@ -7,7 +7,7 @@ pipeline:
     commands:
     #   - export APP_SOURCE_DIR="$${CI_WORKSPACE}"/app
     #   - echo $APP_SOURCE_DIR
-    #   # - printenv
+      - printenv
     #   - chmod +x .scripts/install-meteor.sh && .scripts/install-meteor.sh
     #   - ls ~
     #   - cd $APP_SOURCE_DIR
@@ -22,8 +22,8 @@ pipeline:
 
   docker:
     image: plugins/docker
-    username: ${DOCKER_USERNAME}
-    password: ${DOCKER_PASSWORD}
+    username: ${docker_username}
+    password: ${docker_password}
     # secrets: [ docker_username, docker_password ]
     repo: yusef0211/drone-test
     # repo: "$${DOCKER_USERNAME}/$${APP_NAME}" -> ${DOCKER_USERNAME}/${APP_NAME}:latest
