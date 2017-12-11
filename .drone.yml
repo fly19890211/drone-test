@@ -18,6 +18,7 @@ pipeline:
     #   - apt-get update && apt-get install -y tree
     #   - tree -d ./bundle
       # - cd ../ && docker build -t $${DOCKER_USERNAME}/$${APP_NAME}:$${DRONE_TAG} .
+      - echo ${DRONE_TAG}
       - cd ./build && tar -zxvf app.tar.gz
 
   docker:
