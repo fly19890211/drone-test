@@ -22,8 +22,8 @@ pipeline:
 
   docker:
     image: plugins/docker
-    username: ${docker_username}
-    password: ${docker_password}
+    username: ${DOCKER_USERNAME}
+    password: ${DOCKER_PASSWORD}
     # secrets: [ docker_username, docker_password ]
     repo: yusef0211/drone-test
     # repo: "$${DOCKER_USERNAME}/$${APP_NAME}" -> ${DOCKER_USERNAME}/${APP_NAME}:latest
