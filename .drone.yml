@@ -26,10 +26,10 @@ pipeline:
     repo: yusef0211/drone-test
     # repo: "$${DOCKER_USERNAME}/$${APP_NAME}" -> ${DOCKER_USERNAME}/${APP_NAME}:latest
     dockerfile: Dockerfile
-    # default_tags: true
-    # tags:
-    #   - latest
-    #   - ${DRONE_TAG}
+    default_tags: true
+    tags:
+      - latest
+      - ${DRONE_TAG}
     storage_driver: vfs     # issue known from: http://www.jianshu.com/p/8198bbf581f6
     when:
       branch: master
