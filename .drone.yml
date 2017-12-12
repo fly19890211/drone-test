@@ -5,20 +5,17 @@ pipeline:
       - APP_NAME=drone_test_meteor
       - DOCKER_USERNAME=sunforevertw
     commands:
-    #   - export APP_SOURCE_DIR="$${CI_WORKSPACE}"/app
-    #   - echo $APP_SOURCE_DIR
-      - printenv
-    #   - chmod +x .scripts/install-meteor.sh && .scripts/install-meteor.sh
-    #   - ls ~
-    #   - cd $APP_SOURCE_DIR
-    #   - ls
-    #   - meteor build ../build --architecture os.linux.x86_64 --allow-superuser
-    #   - cd ../build && tar -zxvf app.tar.gz
-    #   - echo $${DOCKER_USERNAME}/$${APP_NAME}:$${DRONE_TAG}
-    #   - apt-get update && apt-get install -y tree
-    #   - tree -d ./bundle
+      # - export APP_SOURCE_DIR="$${CI_WORKSPACE}"/app
+      # - echo $APP_SOURCE_DIR
+      # - printenv
+      # - chmod +x .scripts/install-meteor.sh && .scripts/install-meteor.sh
+      # - ls ~
+      # - cd $APP_SOURCE_DIR
+      # - ls
+      # - meteor build ../build --architecture os.linux.x86_64 --allow-superuser
+      # - cd ../build && tar -zxvf app.tar.gz
       # - cd ../ && docker build -t $${DOCKER_USERNAME}/$${APP_NAME}:$${DRONE_TAG} .
-      - echo $${DRONE_TAG}
+      - echo $DRONE_TAG
       - cd ./build && tar -zxvf app.tar.gz
 
   docker:
@@ -29,6 +26,7 @@ pipeline:
     repo: yusef0211/drone-test
     # repo: "$${DOCKER_USERNAME}/$${APP_NAME}" -> ${DOCKER_USERNAME}/${APP_NAME}:latest
     dockerfile: Dockerfile
+    default_tags: true
     tags:
       - latest
       - ${DRONE_TAG}
